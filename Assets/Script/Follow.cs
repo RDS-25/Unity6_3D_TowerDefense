@@ -23,9 +23,6 @@ public class Follow : MonoBehaviour
     CapsuleCollider capsuleCollider;
 
     public bool ismove;
-
-    
-
     private void Start()
     {
         FindWayPoint();
