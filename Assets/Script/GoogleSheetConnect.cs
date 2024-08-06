@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 public class GoogleSheetConnect : MonoBehaviour
 {
     public stat charstat;
-    const string URL="https://docs.google.com/spreadsheets/d/1oboPiWBprG7bQLPACEvGmP8T56EwadVNiuRiER_lvhA/export?format=tsv&range=A2:F4"; 
+    const string URL="https://docs.google.com/spreadsheets/d/1oboPiWBprG7bQLPACEvGmP8T56EwadVNiuRiER_lvhA/export?format=tsv&range=A2:F"; 
     const string URL2="https://script.google.com/macros/s/AKfycbxrqUAVoSWQ8x9incire_UgDoP-RbRJiXeLgCSwmN9sxjWCasMips4q1eUPdP6Kvp5QPw/exec";
     IEnumerator Start()
     {
@@ -29,7 +29,7 @@ public class GoogleSheetConnect : MonoBehaviour
                 charstat.CharacterDatas[i].Name = column[0];
                 charstat.CharacterDatas[i].MaxAmmo =int.Parse(column[1]);
                 //enum 타입으로 넣는방법
-                if (System.Enum.TryParse(column[2], out CharacterData.Type characterType))
+                if (Enum.TryParse(column[2], out CharacterData.Type characterType))
                 {
                     charstat.CharacterDatas[i].type = characterType;
                 }

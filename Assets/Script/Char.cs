@@ -8,7 +8,6 @@ public class Char : MonoBehaviour
     public List<Transform> enemiesInRange = new List<Transform>(); // 사거리 내의 적 리스트
     public GameObject aim; // 공격할 적 
     private Animator animator; // Animator 컴포넌트 참조
-
     public int maxAmmo;
     public int currentAmmo;
     public string type;
@@ -102,14 +101,14 @@ public class Char : MonoBehaviour
         // 타이머가 0 이하로 내려가면 총알을 발사하고 타이머 초기화
         if (attackTimer <= 0)
         {
+            // // 총알이 없는 경우 처리 예시
+            // if (currentAmmo <= 0)
+            // {
+            //     disablePar();
+            // }
+            // currentAmmo--;
             attackTimer = attackInterval; // 타이머 초기화
-            currentAmmo--;
             aim.GetComponent<EnemyStat>().Hp-= attackDamage;
-            // 총알이 없는 경우 처리 예시
-            if (currentAmmo <= 0)
-            {
-                disablePar();
-            }
         }
     }
 

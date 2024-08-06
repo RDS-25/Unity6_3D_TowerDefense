@@ -4,14 +4,12 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-
-
 
 
 public class GameControl : MonoBehaviour
    {
-
+      
+      public static int objectCount = 0;
       [SerializeField]
       private Camera mainCamera;
       private Ray ray;
@@ -74,6 +72,7 @@ public class GameControl : MonoBehaviour
    
    void Update()
    {
+      Lose();
       if(DefaultState){
          if (Input.GetMouseButtonDown(0))
             {
@@ -114,6 +113,21 @@ public class GameControl : MonoBehaviour
       }
       
    }
+   public static void AddObject()
+   {
+      objectCount++;
+   }
+   public static void RemoveObject()
+   {
+      objectCount--;
+   }
+
+   void Lose(){
+      if(objectCount == 3){
+         Debug.Log("패배");
+      }
+   }
+
       //기본 컬러로
       void DefaultColor()
       {

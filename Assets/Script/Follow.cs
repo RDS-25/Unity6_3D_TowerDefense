@@ -33,7 +33,12 @@ public class Follow : MonoBehaviour
         if (isPlayOnAwake == true) Play();
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
-
+    void OnEnable() {
+        GameControl.AddObject();
+    }
+    void OnDisable() {
+        GameControl.RemoveObject();
+    }
     
     void Update(){
         DestoryEnmey();
@@ -69,10 +74,11 @@ public class Follow : MonoBehaviour
  
 
     void DestoryEnmey(){
-        int Hp =  transform.GetComponent<EnemyStat>().Hp ;
-        if(Hp <= 0){
-        StopAllCoroutines();
-        capsuleCollider.enabled = false;
+            int Hp =  transform.GetComponent<EnemyStat>().Hp ;
+            if(Hp <= 0){
+            StopAllCoroutines();
+            // capsuleCollider.enabled = false;
+            gameObject.SetActive(false);
         }
     }
 
