@@ -8,4 +8,5 @@ using UnityEngine;
 public class stat : ScriptableObject 
 {
     public List<CharacterData> CharacterDatas =new List<CharacterData>();
+  
 }

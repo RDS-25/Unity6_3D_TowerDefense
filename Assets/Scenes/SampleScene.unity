@@ -8416,6 +8416,7 @@ GameObject:
   - component: {fileID: 1923301814}
   - component: {fileID: 1923301816}
   - component: {fileID: 1923301817}
+  - component: {fileID: 1923301818}
   m_Layer: 0
   m_Name: GameManger
   m_TagString: Untagged
@@ -8497,6 +8498,19 @@ MonoBehaviour:
   MaxStage: 0
   timerText: {fileID: 1187256863}
   stageText: {fileID: 1335465307}
+--- !u!114 &1923301818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923301813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980710652506dab439248f7e8b35529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charstat: {fileID: 11400000, guid: 4e55057e53ed99e4a80a8821816437d4, type: 2}
 --- !u!1 &1942400400
 GameObject:
   m_ObjectHideFlags: 0
