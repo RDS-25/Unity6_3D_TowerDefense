@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,14 @@ public class GoogleSheetConnect : MonoBehaviour
             for(int j =0; j < columnSize; j++){
                 charstat.CharacterDatas[i].Name = column[0];
                 charstat.CharacterDatas[i].MaxAmmo =int.Parse(column[1]);
+                //enum 타입으로 넣는방법
+                if (System.Enum.TryParse(column[2], out CharacterData.Type characterType))
+                {
+                    charstat.CharacterDatas[i].type = characterType;
+                }
+                charstat.CharacterDatas[i].Damage =int.Parse(column[3]);
+                charstat.CharacterDatas[i].AttackSpeed =float.Parse(column[4]);
+                charstat.CharacterDatas[i].AttackRange =float.Parse(column[5]);
             }
         }
     }

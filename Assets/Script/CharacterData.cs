@@ -5,9 +5,9 @@ public class CharacterData
 {
    public string Name;
    public int MaxAmmo;
-   public enum Type{Normal,siege , Penetrate};
+   public enum Type{Normal,Siege , Penetrate};
    public Type type;
    public int Damage;
    public float AttackSpeed;
-   public int AttackRange;
+   public float AttackRange;
 }

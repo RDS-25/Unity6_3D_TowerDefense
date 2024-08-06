@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterDatas:
   - Name: song
-    MaxAmmo: 50
+    MaxAmmo: 30
     type: 0
     Damage: 1
     AttackSpeed: 1
     AttackRange: 5
   - Name: Soldier
-    MaxAmmo: 7
+    MaxAmmo: 12
     type: 1
     Damage: 20
     AttackSpeed: 0.5
     AttackRange: 7
   - Name: Hero
-    MaxAmmo: 10
+    MaxAmmo: 4
     type: 2
     Damage: 1
     AttackSpeed: 0.7
