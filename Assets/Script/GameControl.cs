@@ -123,7 +123,7 @@ public class GameControl : MonoBehaviour
    }
 
    void Lose(){
-      if(objectCount == 3){
+      if(objectCount == 10){
          Debug.Log("패배");
       }
    }
@@ -226,28 +226,47 @@ public class GameControl : MonoBehaviour
          }
       }
 
-      public void TakeRest(){
-         var TileSwpan = selectedTileTransform.GetComponent<TileSwpan>();
-         if(ClickedTower==null){
-            Debug.Log("선택된 타워가 없습니다.");
-            return;
-         }
-         if(restlist.Count > restcharlist.Count){
-            AddValueAtFirstEmptyOrNull(ClickedTower);
-            int index = restcharlist.IndexOf(ClickedTower);
-            Vector3 newPos = new Vector3(restlist[index].position.x,restlist[index].position.y+0.7f,restlist[index].position.z);
-            ClickedTower.position = newPos;
-            ClickedTower.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            var restcube = restlist[index].GetComponent<TileSwpan>();
-            restcube.IsBuildTower = true;
-            TileSwpan.IsBuildTower= false;
-            ClickedTower.GetComponent<Char>().isRest = true;
-            isClick=false;
-            closeUI();
-         }else{
-            Debug.Log("자리가 다찼음");
-         }
+   public void TakeRest() {
+      var TileSwpan = selectedTileTransform.GetComponent<TileSwpan>();
+      int nonNullCount = restcharlist.Count(item => item != null);
+
+      if (ClickedTower == null) {
+         Debug.Log("선택된 타워가 없습니다.");
+         return;
       }
+
+      // restlist.Count > nonNullCount로 비교
+      if (restlist.Count > nonNullCount) {
+         // 타워를 리스트의 첫 번째 null 위치에 추가
+         AddValueAtFirstEmptyOrNull(ClickedTower);
+         int index = restcharlist.IndexOf(ClickedTower);
+
+         // 타워의 위치 업데이트
+         Vector3 newPos = new Vector3(restlist[index].position.x, restlist[index].position.y + 0.7f, restlist[index].position.z);
+         ClickedTower.position = newPos;
+         ClickedTower.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+         // 타워 상태 업데이트
+         var restcube = restlist[index].GetComponent<TileSwpan>();
+         restcube.IsBuildTower = true;
+         TileSwpan.IsBuildTower = false;
+         ClickedTower.GetComponent<Char>().isRest = true;
+
+         // 클릭 상태 해제
+         isClick = false;
+
+         // 디버그 로그 출력
+         Debug.Log("RESTCOUNT: " + restcharlist.Count);
+         nonNullCount = restcharlist.Count(item => item != null); // 타워 추가 후 nonNullCount 업데이트
+         Debug.Log("NONULLCOUNT: " + nonNullCount);
+
+         closeUI();
+      } else if (restlist.Count == nonNullCount) { // nonNullCount와 비교
+         Debug.Log("자리가 다 찼음");
+         Debug.Log(restcharlist.Count);
+      }
+   }
+
 
       public void MoveStateture(){
          MoveState = true;
@@ -259,6 +278,7 @@ public class GameControl : MonoBehaviour
       }
 
       void moveTile(){
+         
          if(MoveState){
             if (Input.GetMouseButtonDown(0)){
                   ray = mainCamera.ScreenPointToRay(Input.mousePosition);

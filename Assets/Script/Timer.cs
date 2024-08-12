@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
 
     public TMP_Text timerText; // UI 텍스트 객체 연결 (타이머 표시용)
     public TMP_Text stageText; // UI 텍스트 객체 연결 (타이머 표시용)
+    public TMP_Text count; // UI 텍스트 객체 연결 (타이머 표시용)
 
 
     void Awake(){
@@ -65,6 +66,7 @@ public class Timer : MonoBehaviour
             float remainingTime = Mathf.Max(stageDuration - timer, 0.0f); // 남은 시간 계산
             timerText.text = string.Format("Time Left: {0:F1} seconds", remainingTime);
             stageText.text="Stage: "+CurrentStage.ToString();
+            count.text="UnitCount:"+GameControl.objectCount.ToString();
         }
     }
 
